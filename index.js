@@ -62,3 +62,62 @@ console.log("PROFESOR");
 profesor1.obtDetalles();
 profesor1.asignar();
 profesor1.asignar("BBDD", "C");
+
+
+class Warrior {
+  constructor(life, power) {
+    this.life = life;
+    this.power = power;
+  }
+
+  attack() {
+    return this.power;
+  }
+
+  defend(damage) {
+    this.life -= damage;
+    console.log(`Vida restante: ${this.life}`);
+  }
+}
+
+class Maya extends Warrior {
+  constructor(life, power) {
+    super(life, power);
+  }
+
+  drinkColaCao() {
+    this.power += 10;
+    console.log(`Maya bebe Cola Cao → Poder: ${this.power}`);
+  }
+}
+
+class Aztec extends Warrior {
+  constructor(life, power) {
+    super(life, power);
+  }
+
+  drinkNesquik() {
+    this.life += 10;
+    console.log(`Azteca bebe Nesquik → Vida: ${this.life}`);
+  }
+}
+
+
+const maya = new Maya(100, 20);
+const azteca = new Aztec(100, 25);
+
+console.log("=== COMBATE ===");
+
+// Azteca bebe Nesquik
+azteca.drinkNesquik();
+
+// Maya bebe Cola Cao
+maya.drinkColaCao();
+
+// Maya ataca a Azteca
+console.log("Maya ataca!");
+azteca.defend(maya.attack());
+
+// Azteca ataca a Maya
+console.log("Azteca ataca!");
+maya.defend(azteca.attack());
