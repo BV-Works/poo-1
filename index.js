@@ -51,13 +51,14 @@ const estudiante1 = new Estudiante("Ana", 20, "Femenino", "2º DAW", "A");
 const profesor1 = new Profesor("Luis", 45, "Masculino", "Programación", "Avanzado");
 
 
-console.log("=== PERSONA ===");
+console.log("PERSONA");
 persona1.obtDetalles();
 
-console.log("\n=== ESTUDIANTE ===");
+console.log("ESTUDIANTE");
 estudiante1.obtDetalles();
 estudiante1.registrar();
-
-console.log("\n=== PROFESOR ===");
+estudiante1.registrar("backend", "B");
+console.log("PROFESOR");
 profesor1.obtDetalles();
 profesor1.asignar();
+profesor1.asignar("BBDD", "C");
