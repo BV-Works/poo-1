@@ -1,3 +1,5 @@
+// EJERCICIO POO-1
+
 class Persona {
   constructor(nombre, edad, genero) {
     this.nombre = nombre;
@@ -102,7 +104,7 @@ class Aztec extends Warrior {
   }
 }
 
-
+// EJERCICIO POO 2
 const maya = new Maya(100, 20);
 const azteca = new Aztec(100, 25);
 
@@ -122,6 +124,8 @@ azteca.defend(maya.attack());
 console.log("Azteca ataca!");
 maya.defend(azteca.attack());
 
+
+// EJERCICIO POO 3
 
 const civilPlanes = ["assets/civil-plane-1.webp", "assets/civil-plane-2.jpg"];
 const civilHelicopters = ["assets/civil-heli-1.jpg", "assets/civil-heli-2.jpg"];
