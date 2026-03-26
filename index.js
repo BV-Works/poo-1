@@ -106,7 +106,7 @@ class Aztec extends Warrior {
 const maya = new Maya(100, 20);
 const azteca = new Aztec(100, 25);
 
-console.log("=== COMBATE ===");
+console.log("COMBATE");
 
 // Azteca bebe Nesquik
 azteca.drinkNesquik();
@@ -121,3 +121,83 @@ azteca.defend(maya.attack());
 // Azteca ataca a Maya
 console.log("Azteca ataca!");
 maya.defend(azteca.attack());
+
+
+const civilPlanes = ["assets/civil-plane-1.webp", "assets/civil-plane-2.jpg"];
+const civilHelicopters = ["assets/civil-heli-1.jpg", "assets/civil-heli-2.jpg"];
+
+const militaryPlanes = ["assets/combat-plane-1.jpeg", "assets/combat-plane-2.jpg"];
+const militaryHelicopters = ["assets/combat-heli-1.jpeg", "assets/combat-heli-2.jpg"];
+
+
+class Gallery {
+  constructor(civil, military) {
+    this.civil = civil;
+    this.military = military;
+  }
+
+  getRandomCivil() {
+    const index = Math.floor(Math.random() * this.civil.length);
+    return this.civil[index];
+  }
+
+  getRandomMilitary() {
+    const index = Math.floor(Math.random() * this.military.length);
+    return this.military[index];
+  }
+
+  getAll() {
+    return [...this.civil, ...this.military];
+  }
+}
+
+class Painter {
+  constructor() {
+    this.createGallery();
+  }
+
+  createGallery() {
+    const section = document.createElement("section");
+    section.classList.add("gallery");
+    document.body.appendChild(section);
+
+    this.gallery = section;
+  }
+
+  createImageTag(url) {
+    const picture = document.createElement("picture");
+    const img = document.createElement("img");
+
+    img.src = url;
+    img.alt = "Imagen de aviación";
+
+    picture.appendChild(img);
+
+    return picture;
+  }
+
+  paintSingleImage(url) {
+    const element = this.createImageTag(url);
+    this.gallery.appendChild(element);
+  }
+
+  paintMultipleImages(images) {
+    images.forEach((url) => {
+      const element = this.createImageTag(url);
+      this.gallery.appendChild(element);
+    });
+  }
+}
+
+
+const civil = [...civilPlanes, ...civilHelicopters];
+const military = [...militaryPlanes, ...militaryHelicopters];
+
+const gallery = new Gallery(civil, military);
+
+const painter = new Painter();
+
+painter.paintMultipleImages(gallery.getAll());
+
+painter.paintSingleImage(gallery.getRandomCivil());
+painter.paintSingleImage(gallery.getRandomMilitary());
